@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "ignorePatterns": [
+    ".anchor",
+    ".DS_Store",
+    "target",
+    "node_modules",
+    "dist",
+    "build",
+    "test-ledger"
+  ]
+}

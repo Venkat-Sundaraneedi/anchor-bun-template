@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "types": ["bun-types"],
+    "lib": ["es2024"],
+    "module": "nodenext",
+    "target": "es2024",
+    "moduleResolution": "nodenext",
+    "esModuleInterop": true,
+    "isolatedModules": true
+  }
+}
