@@ -1,17 +1,11 @@
 {
   "license": "ISC",
-  "scripts": {
-    "lint:fix": "oxlint --fix",
-    "lint": "oxlint",
-    "format": "oxfmt"
-  },
+  "scripts": {},
   "dependencies": {
     "@anchor-lang/core": "^0.32.1"
   },
   "devDependencies": {
-    "@types/bn.js": "^5.1.0",
-    "oxfmt": "^0.24.0",
-    "oxlint": "^1.39.0",
-    "typescript": "^5.7.3"
+    "@types/bn.js": "^5.2.0",
+    "typescript": "^5.9.3"
   }
 }
