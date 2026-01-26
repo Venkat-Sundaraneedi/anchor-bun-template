@@ -2,7 +2,6 @@
 bun = "1.3.6"
 "npm:oxfmt" = "latest"
 "npm:oxlint" = "latest"
-rust = "1.93.0"
 
 [tasks.setup]
 description = "Install the Dependencies"
@@ -42,7 +41,7 @@ run = "anchor clean && rm -rf node_modules"
 m = "mise"
 
 [settings]
-# jobs = 4
+jobs = 1
 
 [settings.npm]
 package_manager = "bun"
