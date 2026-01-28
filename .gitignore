@@ -1,5 +1,6 @@
 .anchor
 .DS_Store
+clients
 target
 runbooks
 **/*.rs.bk

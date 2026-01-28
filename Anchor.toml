@@ -6,7 +6,7 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-jest_multiple = "5gP1fQZ6vG2iAwd1nCCQKFaayNiiPDZybw7cyfxotdpW"
+jest_multiple = "EEMw5bXyDq75hWqtQMXW6N3bsKnQhCBwRQAsg3sdnv4c"
 
 [registry]
 url = "https://api.apr.dev"

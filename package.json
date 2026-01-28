@@ -2,10 +2,9 @@
   "license": "ISC",
   "scripts": {},
   "dependencies": {
-    "@anchor-lang/core": "^0.32.1"
+    "@codama/nodes-from-anchor": "^1.3.8",
+    "@codama/renderers-js": "^1.5.5",
+    "@solana/kit": "^5.5.0"
   },
-  "devDependencies": {
-    "@types/bn.js": "^5.2.0",
-    "typescript": "^5.9.3"
-  }
+  "devDependencies": {}
 }
