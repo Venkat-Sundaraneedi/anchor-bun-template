@@ -1,5 +1,5 @@
 {
-  "idl": "target/idl/jest_multiple.json",
+  "idl": "target/idl/bun_kit.json",
   "before": [],
   "scripts": {
     "js": {

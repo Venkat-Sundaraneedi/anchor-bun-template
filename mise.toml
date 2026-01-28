@@ -12,6 +12,10 @@ run = "bun install"
 description = "Sync Anchor keys"
 run = "anchor keys sync"
 
+[tasks.localnet]
+description = "Start surfpool"
+run = "surfpool start"
+
 [tasks.build]
 depends = ["lint", "fmt", "sync"]
 description = "Build the Anchor Program"
@@ -41,7 +45,7 @@ run = "bun update && cargo update"
 
 [tasks.clean]
 description = "Clean the Cache"
-run = "anchor clean && rm -rf node_modules clients"
+run = "rm -rf target node_modules clients .surfpool runbooks txtx.yml"
 
 [shell_alias]
 m = "mise"

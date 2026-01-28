@@ -9,10 +9,10 @@ pub use constants::*;
 pub use instructions::*;
 // pub use state::*;
 
-declare_id!("5pS6vXNshfnXs2fzeCa7wNhZhb2gwaf63cmPNuTYxq4b");
+declare_id!("BKqHpK9H6mv7aLcmSDRzKEc9Mvdn2p39ETyUJqrTs7cS");
 
 #[program]
-pub mod jest_multiple {
+pub mod bun_kit {
     use super::*;
 
     pub fn initialize(ctx: Context<Initialize>) -> Result<()> {

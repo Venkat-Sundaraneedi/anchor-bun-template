@@ -1,13 +1,10 @@
 import { describe, test, expect, beforeAll } from "bun:test";
 import * as solana from "@solana/kit";
-import {
-  getInitializeInstruction,
-  JEST_MULTIPLE_PROGRAM_ADDRESS,
-} from "../clients/js/src/generated";
+import { getInitializeInstruction, BUN_KIT_PROGRAM_ADDRESS } from "../clients/js/src/generated";
 
 const RPC_ENDPOINT = process.env.RPC_ENDPOINT || "http://127.0.0.1:8899";
 
-describe("Jest Multiple Program", () => {
+describe("Bun Kit Program", () => {
   let rpc: ReturnType<typeof solana.createSolanaRpc>;
   let payer: solana.KeyPairSigner;
 
@@ -25,12 +22,12 @@ describe("Jest Multiple Program", () => {
 
     // Verify program is deployed
     const accountInfo = await rpc
-      .getAccountInfo(JEST_MULTIPLE_PROGRAM_ADDRESS, { encoding: "base64" })
+      .getAccountInfo(BUN_KIT_PROGRAM_ADDRESS, { encoding: "base64" })
       .send();
 
     if (!accountInfo.value || !accountInfo.value.executable) {
       throw new Error(
-        `Program ${JEST_MULTIPLE_PROGRAM_ADDRESS} is not deployed. Run 'anchor deploy' first.`,
+        `Program ${BUN_KIT_PROGRAM_ADDRESS} is not deployed. Run 'anchor deploy' first.`,
       );
     }
   });
