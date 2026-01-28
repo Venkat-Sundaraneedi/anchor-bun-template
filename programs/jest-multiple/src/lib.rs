@@ -9,7 +9,7 @@ pub use constants::*;
 pub use instructions::*;
 // pub use state::*;
 
-declare_id!("EEMw5bXyDq75hWqtQMXW6N3bsKnQhCBwRQAsg3sdnv4c");
+declare_id!("5pS6vXNshfnXs2fzeCa7wNhZhb2gwaf63cmPNuTYxq4b");
 
 #[program]
 pub mod jest_multiple {

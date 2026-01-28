@@ -2,7 +2,6 @@
 .DS_Store
 clients
 target
-runbooks
 **/*.rs.bk
 node_modules
 test-ledger

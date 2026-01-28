@@ -20,7 +20,7 @@ run = "anchor build && codama run js"
 [tasks.deploy]
 depends = ["build"]
 description = "Deploy Anchor program to surfpool"
-run = "anchor deploy"
+run = "anchor program deploy"
 
 [tasks.lint]
 description = "Lint the project"
