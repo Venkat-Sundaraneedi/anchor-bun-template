@@ -2,15 +2,12 @@
 
 A minimal, modern Solana program template using Anchor framework with Bun runtime.
 
-## Prerequisites (Install Before)
+## Prerequisites
 
-// ====================================
-// REQUIRED TOOLS
-// ====================================
 
 | Tool | Purpose | Installation |
 |------|---------|--------------|
-| **Mise** | Task runner & version manager | `curl https://mise.run | sh` |
+| **Mise** | Task runner & version manager | `curl https://mise.run \| sh` |
 | **Solana CLI** | Solana toolchain | `sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"` |
 | **Anchor CLI** | Solana framework | See compilation instructions below |
 | **Surfpool** | Local validator | `curl -sL https://run.surfpool.run/ \| bash` |
@@ -60,9 +57,6 @@ mise test
 
 ## Opinionated Tech Stack
 
-// ====================================
-// DIFFERENCES FROM DEFAULT ANCHOR
-// ====================================
 
 | Component | This Template | Default Anchor |
 |-----------|--------------|----------------|
@@ -82,12 +76,8 @@ mise test
 └── migrations/               # Deployment scripts
 ```
 
-## Tech Stack
+## Tech Stack (Installed automatically via mise)
 
-// ====================================
-// PROJECT DEPENDENCIES
-// ====================================
-// (Installed automatically via mise)
 
 | Component | Purpose | Version |
 |-----------|---------|---------|
