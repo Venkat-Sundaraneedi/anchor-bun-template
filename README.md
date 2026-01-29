@@ -4,13 +4,12 @@ A minimal, modern Solana program template using Anchor framework with Bun runtim
 
 ## Prerequisites
 
-
-| Tool | Purpose | Installation |
-|------|---------|--------------|
-| **Mise** | Task runner & version manager | `curl https://mise.run \| sh` |
-| **Solana CLI** | Solana toolchain | `sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"` |
-| **Anchor CLI** | Solana framework | See compilation instructions below |
-| **Surfpool** | Local validator | `curl -sL https://run.surfpool.run/ \| bash` |
+| Tool           | Purpose                       | Installation                                                    |
+| -------------- | ----------------------------- | --------------------------------------------------------------- |
+| **Mise**       | Task runner & version manager | `curl https://mise.run \| sh`                                   |
+| **Solana CLI** | Solana toolchain              | `sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"` |
+| **Anchor CLI** | Solana framework              | See compilation instructions below                              |
+| **Surfpool**   | Local validator               | `curl -sL https://run.surfpool.run/ \| bash`                    |
 
 ```bash
 # Optional QoL: Enable mise completions
@@ -32,6 +31,7 @@ cp target/release/anchor ~/.local/bin/  # or any directory in your PATH
 ```
 
 Verify installations:
+
 ```bash
 mise --version
 solana --version
@@ -51,7 +51,7 @@ mise install  # Install project dependencies (tools)
 mise setup  # Install project dependencies (npm packages)
 
 # Build and deploy (start surfpool before deploying if you are using localnet)
-mise deploy 
+mise deploy
 
 # Run tests
 mise test
@@ -59,15 +59,14 @@ mise test
 
 ## Opinionated Tech Stack
 
-
-| Component | This Template | Default Anchor |
-|-----------|--------------|----------------|
-| **Package Manager** | Bun | Yarn/NPM |
-| **Test Runner** | Bun test | Mocha |
-| **Client Library** | Generated via Codama | anchor-lang/core |
-| **Web3 Library** | @solana/kit (Web3.js v2) | @solana/web3.js v1 |
-| **Automation** | Mise tasks | Custom scripts |
-| **Localnet** | Surfpool | solana-test-validator |
+| Component           | This Template            | Default Anchor        |
+| ------------------- | ------------------------ | --------------------- |
+| **Package Manager** | Bun                      | Yarn/NPM              |
+| **Test Runner**     | Bun test                 | Mocha                 |
+| **Client Library**  | Generated via Codama     | anchor-lang/core      |
+| **Web3 Library**    | @solana/kit (Web3.js v2) | @solana/web3.js v1    |
+| **Automation**      | Mise tasks               | Custom scripts        |
+| **Localnet**        | Surfpool                 | solana-test-validator |
 
 ## Project Structure
 
@@ -80,15 +79,14 @@ mise test
 
 ## Tech Stack (Installed automatically via mise)
 
-
-| Component | Purpose | Version |
-|-----------|---------|---------|
-| **Bun** | JavaScript runtime | 1.3.7 |
-| **Anchor Lang** | Solana framework | Git master |
-| **Codama** | TypeScript client generation | 1.3.8+ |
-| **Solana Kit** | Web3.js v2 wrapper | 5.5.1 |
-| **Oxlint** | TypeScript linting | latest |
-| **Oxfmt** | TypeScript formatting | latest |
+| Component       | Purpose                      | Version    |
+| --------------- | ---------------------------- | ---------- |
+| **Bun**         | JavaScript runtime           | 1.3.7      |
+| **Anchor Lang** | Solana framework             | Git master |
+| **Codama**      | TypeScript client generation | 1.3.8+     |
+| **Solana Kit**  | Web3.js v2 wrapper           | 5.5.1      |
+| **Oxlint**      | TypeScript linting           | latest     |
+| **Oxfmt**       | TypeScript formatting        | latest     |
 
 ## Development Workflow
 
@@ -122,7 +120,6 @@ mise test       # Run tests (using Bun test runner)
 - **codama.json** - Codama client generation configuration
 - **Cargo.toml** - Rust workspace configuration
 
-
 ## Testing
 
 Tests use Bun's built-in test runner with Codama-generated clients:
@@ -155,5 +152,6 @@ mise clean     # Clean build artifacts and caches
 ## Network Configuration
 
 Default network: **localnet**
+
 - Update `provider.cluster` in `Anchor.toml` for different networks
 - Ensure corresponding validator (surfpool for localnet) is running

@@ -1,18 +1,22 @@
 import { describe, test, expect, beforeAll } from "bun:test";
 import * as solana from "@solana/kit";
+import { airdrop, litesvm, transactionPlanner } from "@solana/kit-plugins";
 import { getInitializeInstruction, BUN_KIT_PROGRAM_ADDRESS } from "../clients/js/src/generated";
 
 const RPC_ENDPOINT = process.env.RPC_ENDPOINT || "http://127.0.0.1:8899";
 
 describe("Bun Kit Program", () => {
   let rpc: ReturnType<typeof solana.createSolanaRpc>;
+  let client: solana.createEmptyClient;
   let payer: solana.KeyPairSigner;
 
   beforeAll(async () => {
+    client = solana.createEmptyClient().use(litesvm()).use(airdrop());
     rpc = solana.createSolanaRpc(RPC_ENDPOINT);
     payer = await solana.generateKeyPairSigner();
 
     // Airdrop SOL to payer
+    client.airdrop(payer.address, lamports(2_000_000_000n));
     try {
       await rpc.requestAirdrop(payer.address, BigInt(2_000_000_000)).send();
       await new Promise((resolve) => setTimeout(resolve, 1000));

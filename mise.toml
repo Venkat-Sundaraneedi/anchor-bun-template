@@ -35,7 +35,7 @@ description = "format the project"
 run = "oxfmt && cargo fmt --all"
 
 [tasks.test]
-depends = ["deploy"]
+depends = ["build"]
 description = "Test the Anchor Program"
 run = "anchor test"
 
