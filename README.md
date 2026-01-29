@@ -50,9 +50,6 @@ mise install  # Install project dependencies (tools)
 
 mise setup  # Install project dependencies (npm packages)
 
-# Build and deploy (start surfpool before deploying if you are using localnet)
-mise deploy
-
 # Run tests
 mise test
 ```
@@ -65,6 +62,7 @@ mise test
 | **Test Runner**     | Bun test                 | Mocha                 |
 | **Client Library**  | Generated via Codama     | anchor-lang/core      |
 | **Web3 Library**    | @solana/kit (Web3.js v2) | @solana/web3.js v1    |
+| **Testing Framework**      | solana-kit-plugins(litesvm)               | Manual        |
 | **Automation**      | Mise tasks               | Custom scripts        |
 | **Localnet**        | Surfpool                 | solana-test-validator |
 
@@ -84,7 +82,7 @@ mise test
 | **Bun**         | JavaScript runtime           | 1.3.7      |
 | **Anchor Lang** | Solana framework             | Git master |
 | **Codama**      | TypeScript client generation | 1.3.8+     |
-| **Solana Kit**  | Web3.js v2 wrapper           | 5.5.1      |
+| **Solana Kit (with plugins)**  | Web3.js v2 wrapper           | 5.5.1      |
 | **Oxlint**      | TypeScript linting           | latest     |
 | **Oxfmt**       | TypeScript formatting        | latest     |
 
@@ -107,10 +105,15 @@ mise build      # Build program and generate Codama clients
 // ====================================
 // TESTING & DEPLOYMENT
 // ====================================
+mise test       # Run tests (using Bun test runner)
+
+
+// ====================================
+// DEPLOYMENT
+// ====================================
 # Note: Ensure surfpool is running for localnet deployment
 mise localnet   # Start local validator (surfpool)
 mise deploy     # Deploy to localnet
-mise test       # Run tests (using Bun test runner)
 ```
 
 ## Configuration Files
