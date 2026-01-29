@@ -56,15 +56,15 @@ mise test
 
 ## Opinionated Tech Stack
 
-| Component           | This Template            | Default Anchor        |
-| ------------------- | ------------------------ | --------------------- |
-| **Package Manager** | Bun                      | Yarn/NPM              |
-| **Test Runner**     | Bun test                 | Mocha                 |
-| **Client Library**  | Generated via Codama     | anchor-lang/core      |
-| **Web3 Library**    | @solana/kit (Web3.js v2) | @solana/web3.js v1    |
-| **Testing Framework**      | solana-kit-plugins(litesvm)               | Manual        |
-| **Automation**      | Mise tasks               | Custom scripts        |
-| **Localnet**        | Surfpool                 | solana-test-validator |
+| Component             | This Template               | Default Anchor        |
+| --------------------- | --------------------------- | --------------------- |
+| **Package Manager**   | Bun                         | Yarn/NPM              |
+| **Test Runner**       | Bun test                    | Mocha                 |
+| **Client Library**    | Generated via Codama        | anchor-lang/core      |
+| **Web3 Library**      | @solana/kit (Web3.js v2)    | @solana/web3.js v1    |
+| **Testing Framework** | solana-kit-plugins(litesvm) | Manual                |
+| **Automation**        | Mise tasks                  | Custom scripts        |
+| **Localnet**          | Surfpool                    | solana-test-validator |
 
 ## Project Structure
 
@@ -77,14 +77,14 @@ mise test
 
 ## Tech Stack (Installed automatically via mise)
 
-| Component       | Purpose                      | Version    |
-| --------------- | ---------------------------- | ---------- |
-| **Bun**         | JavaScript runtime           | 1.3.7      |
-| **Anchor Lang** | Solana framework             | Git master |
-| **Codama**      | TypeScript client generation | 1.3.8+     |
-| **Solana Kit (with plugins)**  | Web3.js v2 wrapper           | 5.5.1      |
-| **Oxlint**      | TypeScript linting           | latest     |
-| **Oxfmt**       | TypeScript formatting        | latest     |
+| Component                     | Purpose                      | Version    |
+| ----------------------------- | ---------------------------- | ---------- |
+| **Bun**                       | JavaScript runtime           | 1.3.7      |
+| **Anchor Lang**               | Solana framework             | Git master |
+| **Codama**                    | TypeScript client generation | 1.3.8+     |
+| **Solana Kit (with plugins)** | Web3.js v2 wrapper           | 5.5.1      |
+| **Oxlint**                    | TypeScript linting           | latest     |
+| **Oxfmt**                     | TypeScript formatting        | latest     |
 
 ## Development Workflow
 
