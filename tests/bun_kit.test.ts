@@ -1,31 +1,22 @@
 import { describe, test, expect, beforeAll } from "bun:test";
 import * as solana from "@solana/kit";
-import { airdrop, litesvm, transactionPlanner } from "@solana/kit-plugins";
+import { airdrop, createDefaultLiteSVMClient, RpcFromLiteSVM } from "@solana/kit-plugins";
 import { getInitializeInstruction, BUN_KIT_PROGRAM_ADDRESS } from "../clients/js/src/generated";
 
-const RPC_ENDPOINT = process.env.RPC_ENDPOINT || "http://127.0.0.1:8899";
-
 describe("Bun Kit Program", () => {
-  let rpc: ReturnType<typeof solana.createSolanaRpc>;
   let client: solana.createEmptyClient;
   let payer: solana.KeyPairSigner;
 
   beforeAll(async () => {
-    client = solana.createEmptyClient().use(litesvm()).use(airdrop());
-    rpc = solana.createSolanaRpc(RPC_ENDPOINT);
     payer = await solana.generateKeyPairSigner();
+    client = await createDefaultLiteSVMClient({ payer: payer });
+    client.rpc satisfies RpcFromLiteSVM;
 
     // Airdrop SOL to payer
-    client.airdrop(payer.address, lamports(2_000_000_000n));
-    try {
-      await rpc.requestAirdrop(payer.address, BigInt(2_000_000_000)).send();
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-    } catch (error) {
-      console.warn("Airdrop failed:", error);
-    }
+    await client.airdrop(payer.address, solana.lamports(2_000_000_000n));
 
     // Verify program is deployed
-    const accountInfo = await rpc
+    const accountInfo = await client.rpc
       .getAccountInfo(BUN_KIT_PROGRAM_ADDRESS, { encoding: "base64" })
       .send();
 
@@ -37,7 +28,7 @@ describe("Bun Kit Program", () => {
   });
 
   test("should initialize the program", async () => {
-    const { value: latestBlockhash } = await rpc.getLatestBlockhash().send();
+    const { value: latestBlockhash } = await client.rpc.getLatestBlockhash().send();
     const initializeInstruction = getInitializeInstruction();
 
     // Build and sign transaction
@@ -53,7 +44,7 @@ describe("Bun Kit Program", () => {
     const base64Transaction = solana.getBase64EncodedWireTransaction(signedTransaction);
 
     // Send transaction
-    await rpc
+    await client.rpc
       .sendTransaction(base64Transaction, {
         encoding: "base64",
         maxRetries: 3,
@@ -65,7 +56,7 @@ describe("Bun Kit Program", () => {
     for (let i = 0; i < 30; i++) {
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      const status = await rpc.getSignatureStatuses([signature]).send();
+      const status = await client.rpc.getSignatureStatuses([signature]).send();
 
       if (
         status.value[0]?.confirmationStatus === "confirmed" ||
