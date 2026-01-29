@@ -1,6 +1,6 @@
 import { describe, test, expect, beforeAll } from "bun:test";
 import * as solana from "@solana/kit";
-import { airdrop, createDefaultLiteSVMClient, RpcFromLiteSVM } from "@solana/kit-plugins";
+import { createDefaultLiteSVMClient, RpcFromLiteSVM } from "@solana/kit-plugins";
 import { getInitializeInstruction, BUN_KIT_PROGRAM_ADDRESS } from "../clients/js/src/generated";
 
 describe("Bun Kit Program", () => {
@@ -14,6 +14,9 @@ describe("Bun Kit Program", () => {
 
     // Airdrop SOL to payer
     await client.airdrop(payer.address, solana.lamports(2_000_000_000n));
+
+    client.svm.setAccount(payer);
+    client.svm.addProgramFromFile(BUN_KIT_PROGRAM_ADDRESS, "../target/deploy/bun_kit.so");
 
     // Verify program is deployed
     const accountInfo = await client.rpc
