@@ -43,13 +43,15 @@ surfpool --version
 
 ```bash
 # Clone and setup
-git clone <repository>
-cd <project-folder>
+git clone https://github.com/Venkat-Sundaraneedi/anchor-bun-template.git
+cd anchor-bun-template
 mise trust    # Trust the mise configuration
-mise install  # Install project dependencies
+mise install  # Install project dependencies (tools)
 
-# Build and deploy
-mise deploy (start surfpool before deploying if you are using localnet)
+mise setup  # Install project dependencies (npm packages)
+
+# Build and deploy (start surfpool before deploying if you are using localnet)
+mise deploy 
 
 # Run tests
 mise test
@@ -135,7 +137,7 @@ import { getInitializeInstruction } from "../clients/js/src/generated";
 // IMPORTANT
 // ====================================
 // For localnet deployment, ensure surfpool is running.
-// The project is configured to deploy to localnet by default.
+(The project is configured to deploy to localnet by default.)
 
 ## Code Quality
 
