@@ -12,34 +12,38 @@ This document provides comprehensive context for AI assistants to help with Sola
 ## Technology Stack
 
 ### Core Framework
-| Component | Version/Versioning | Purpose |
-|-----------|-------------------|---------|
-| **Anchor Lang** | Git master branch (latest) | Solana smart contract framework |
-| **Rust** | 1.93.0 (via rust-toolchain.toml) | Smart contract language |
-| **Bun** | 1.3.8 | JavaScript/TypeScript runtime & package manager |
+
+| Component       | Version/Versioning               | Purpose                                         |
+| --------------- | -------------------------------- | ----------------------------------------------- |
+| **Anchor Lang** | Git master branch (latest)       | Solana smart contract framework                 |
+| **Rust**        | 1.93.0 (via rust-toolchain.toml) | Smart contract language                         |
+| **Bun**         | 1.3.8                            | JavaScript/TypeScript runtime & package manager |
 
 ### Web3 & Client Libraries
-| Component | Version | Purpose |
-|-----------|---------|---------|
-| **@solana/kit** | ^5.5.1 | Web3.js v2 - Modern Solana JavaScript SDK |
-| **@solana/kit-plugins** | ^0.2.0 | LiteSVM testing plugin and utilities |
+
+| Component               | Version | Purpose                                   |
+| ----------------------- | ------- | ----------------------------------------- |
+| **@solana/kit**         | ^5.5.1  | Web3.js v2 - Modern Solana JavaScript SDK |
+| **@solana/kit-plugins** | ^0.2.0  | LiteSVM testing plugin and utilities      |
 
 ### Code Generation
-| Component | Version | Purpose |
-|-----------|---------|---------|
-| **Codama** | latest (1.3.8+) | IDL-to-client code generation |
-| **@codama/nodes-from-anchor** | ^1.3.8 | Parse Anchor IDL into Codama nodes |
-| **@codama/renderers-js** | ^1.6.1 | Generate TypeScript clients |
+
+| Component                     | Version         | Purpose                            |
+| ----------------------------- | --------------- | ---------------------------------- |
+| **Codama**                    | latest (1.3.8+) | IDL-to-client code generation      |
+| **@codama/nodes-from-anchor** | ^1.3.8          | Parse Anchor IDL into Codama nodes |
+| **@codama/renderers-js**      | ^1.6.1          | Generate TypeScript clients        |
 
 ### Development Tools
-| Component | Version | Purpose |
-|-----------|---------|---------|
-| **Mise** | Latest | Task runner & version manager |
-| **Oxlint** | Latest | TypeScript/JavaScript linting |
-| **Oxfmt** | Latest | TypeScript/JavaScript formatting |
-| **Rustfmt** | Via toolchain | Rust formatting |
-| **Clippy** | Via toolchain | Rust linting |
-| **Surfpool** | Latest | Local Solana validator |
+
+| Component    | Version       | Purpose                          |
+| ------------ | ------------- | -------------------------------- |
+| **Mise**     | Latest        | Task runner & version manager    |
+| **Oxlint**   | Latest        | TypeScript/JavaScript linting    |
+| **Oxfmt**    | Latest        | TypeScript/JavaScript formatting |
+| **Rustfmt**  | Via toolchain | Rust formatting                  |
+| **Clippy**   | Via toolchain | Rust linting                     |
+| **Surfpool** | Latest        | Local Solana validator           |
 
 ---
 
@@ -95,6 +99,7 @@ This document provides comprehensive context for AI assistants to help with Sola
 ### Rust Program Structure
 
 #### 1. Module Organization (lib.rs pattern)
+
 ```rust
 pub mod constants;
 pub mod error;
@@ -120,6 +125,7 @@ pub mod <program_name> {
 ```
 
 #### 2. Instruction Pattern (instructions/<name>.rs)
+
 ```rust
 use anchor_lang::prelude::*;
 
@@ -135,6 +141,7 @@ pub fn handler(ctx: Context<Initialize>) -> Result<()> {
 ```
 
 #### 3. Constants Pattern (constants.rs)
+
 ```rust
 use anchor_lang::prelude::*;
 
@@ -143,6 +150,7 @@ pub const SEED: &str = "anchor";
 ```
 
 #### 4. Error Pattern (error.rs)
+
 ```rust
 use anchor_lang::prelude::*;
 
@@ -153,8 +161,10 @@ pub enum ErrorCode {
 }
 ```
 
-#### 5. Dependencies (programs/*/Cargo.toml)
+#### 5. Dependencies (programs/\*/Cargo.toml)
+
 - Use Anchor from GitHub master branch (not crates.io):
+
 ```toml
 [dependencies]
 anchor-lang = { git = "https://github.com/solana-foundation/anchor", branch = "master" }
@@ -162,7 +172,8 @@ anchor-lang = { git = "https://github.com/solana-foundation/anchor", branch = "m
 
 ### TypeScript Testing Standards
 
-#### Test File Pattern (tests/*.test.ts)
+#### Test File Pattern (tests/\*.test.ts)
+
 ```typescript
 import { describe, test, expect, beforeAll } from "bun:test";
 import * as solana from "@solana/kit";
@@ -204,6 +215,7 @@ describe("<Program Name>", () => {
 ```
 
 #### Key Testing Patterns
+
 - Use **Bun test runner** (not Mocha/Jest)
 - Use **LiteSVM** via `@solana/kit-plugins` for local testing
 - Use **@solana/kit** (Web3.js v2) - functional programming style with `pipe()`
@@ -216,6 +228,7 @@ describe("<Program Name>", () => {
 ## Configuration Files Reference
 
 ### Anchor.toml
+
 ```toml
 [toolchain]
 package_manager = "bun"
@@ -239,6 +252,7 @@ test = "bun test"
 ```
 
 ### codama.json
+
 ```json
 {
   "idl": "target/idl/<program_name>.json",
@@ -253,6 +267,7 @@ test = "bun test"
 ```
 
 ### tsconfig.json
+
 ```json
 {
   "compilerOptions": {
@@ -268,6 +283,7 @@ test = "bun test"
 ```
 
 ### rust-toolchain.toml
+
 ```toml
 [toolchain]
 channel = "1.93.0"
@@ -276,6 +292,7 @@ profile = "minimal"
 ```
 
 ### .oxfmtrc.json
+
 ```json
 {
   "ignorePatterns": [
@@ -294,18 +311,18 @@ profile = "minimal"
 
 ## Available Mise Tasks
 
-| Task | Description | Dependencies |
-|------|-------------|--------------|
-| `mise setup` | Install npm/bun dependencies | - |
-| `mise sync` | Sync Anchor program keys | - |
-| `mise localnet` | Start Surfpool validator | - |
-| `mise lint` | Run Oxlint with auto-fix | - |
-| `mise fmt` | Format TypeScript (Oxfmt) + Rust (cargo fmt) | - |
-| `mise build` | Build program + generate clients | lint, fmt, sync |
-| `mise deploy` | Deploy to localnet | build |
-| `mise test` | Run Bun tests | build |
-| `mise update` | Update Bun packages + Cargo deps | - |
-| `mise clean` | Clean all build artifacts | - |
+| Task            | Description                                  | Dependencies    |
+| --------------- | -------------------------------------------- | --------------- |
+| `mise setup`    | Install npm/bun dependencies                 | -               |
+| `mise sync`     | Sync Anchor program keys                     | -               |
+| `mise localnet` | Start Surfpool validator                     | -               |
+| `mise lint`     | Run Oxlint with auto-fix                     | -               |
+| `mise fmt`      | Format TypeScript (Oxfmt) + Rust (cargo fmt) | -               |
+| `mise build`    | Build program + generate clients             | lint, fmt, sync |
+| `mise deploy`   | Deploy to localnet                           | build           |
+| `mise test`     | Run Bun tests                                | build           |
+| `mise update`   | Update Bun packages + Cargo deps             | -               |
+| `mise clean`    | Clean all build artifacts                    | -               |
 
 ### Alias: `m` = `mise`
 
@@ -314,6 +331,7 @@ profile = "minimal"
 ## Build Workflow
 
 ### Standard Development Flow
+
 ```bash
 # 1. Setup (one-time)
 mise trust
@@ -332,6 +350,7 @@ mise deploy    # Terminal 2: Deploy program
 ```
 
 ### Build Process Details
+
 1. **lint** → Oxlint fixes TypeScript issues
 2. **fmt** → Oxfmt formats TypeScript, cargo fmt formats Rust
 3. **sync** → `anchor keys sync` updates program IDs
@@ -342,23 +361,24 @@ mise deploy    # Terminal 2: Deploy program
 
 ## Key Differences from Standard Anchor
 
-| Aspect | This Template | Standard Anchor |
-|--------|--------------|-----------------|
-| Package Manager | **Bun** | Yarn/NPM |
-| Test Runner | **Bun test** | Mocha |
-| Client Generation | **Codama** | anchor-client-gen or none |
-| Web3 Library | **@solana/kit** (v2) | @solana/web3.js (v1) |
-| Testing Framework | **solana-kit-plugins (LiteSVM)** | Manual or banks-client |
-| Task Runner | **Mise** | npm scripts or custom |
-| Local Validator | **Surfpool** | solana-test-validator |
-| Formatter | **Oxfmt** | Prettier |
-| Linter | **Oxlint** | ESLint |
+| Aspect            | This Template                    | Standard Anchor           |
+| ----------------- | -------------------------------- | ------------------------- |
+| Package Manager   | **Bun**                          | Yarn/NPM                  |
+| Test Runner       | **Bun test**                     | Mocha                     |
+| Client Generation | **Codama**                       | anchor-client-gen or none |
+| Web3 Library      | **@solana/kit** (v2)             | @solana/web3.js (v1)      |
+| Testing Framework | **solana-kit-plugins (LiteSVM)** | Manual or banks-client    |
+| Task Runner       | **Mise**                         | npm scripts or custom     |
+| Local Validator   | **Surfpool**                     | solana-test-validator     |
+| Formatter         | **Oxfmt**                        | Prettier                  |
+| Linter            | **Oxlint**                       | ESLint                    |
 
 ---
 
 ## Common Patterns & Imports
 
 ### Solana Kit (@solana/kit) - Functional Style
+
 ```typescript
 import * as solana from "@solana/kit";
 
@@ -379,6 +399,7 @@ const airdropAmount = solana.lamports(2_000_000_000n); // 2 SOL in lamports
 ```
 
 ### Generated Client Imports
+
 ```typescript
 // From codama-generated clients
 import {
@@ -388,6 +409,7 @@ import {
 ```
 
 ### LiteSVM Testing
+
 ```typescript
 import { createDefaultLiteSVMClient, RpcFromLiteSVM } from "@solana/kit-plugins";
 
@@ -408,11 +430,13 @@ const signature = client.svm.sendTransaction(signedTransaction);
 ## Deployment Environments
 
 ### Localnet (Default)
+
 - Validator: Surfpool (`mise localnet`)
 - RPC: http://127.0.0.1:8899
 - Wallet: ~/.config/solana/id.json
 
 ### Devnet
+
 - RPC: https://api.devnet.solana.com
 - Configured in txtx.yml
 
@@ -421,26 +445,32 @@ const signature = client.svm.sendTransaction(signedTransaction);
 ## Important Notes
 
 ### Anchor Version
+
 - Uses **master branch** from GitHub, NOT crates.io releases
 - Must compile anchor-cli from source
 
 ### TypeScript Configuration
+
 - Uses `nodenext` module resolution (not Node10/Node)
 - Targets ES2024
 - Bun types must be included
 
 ### Testing
+
 - Always add program to LiteSVM before testing: `client.svm.addProgramFromFile()`
 - Tests timeout at 45 seconds by default
 - Use BigInt for lamports (e.g., `2_000_000_000n`)
 
 ### Code Generation
+
 - Codama generates clients in `clients/js/src/generated/`
 - Run `codama run js` or `mise build` to regenerate after IDL changes
 - Never manually edit files in `clients/js/src/generated/`
 
 ### Git Ignore
+
 Key entries in `.gitignore`:
+
 - .anchor/
 - target/
 - node_modules/

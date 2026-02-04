@@ -34,8 +34,12 @@ run = "oxlint --fix"
 description = "format the project"
 run = "oxfmt && cargo fmt --all"
 
+[tasks.typecheck]
+description = "Type check TypeScript with tsgo"
+run = "bunx @typescript/native-preview --noEmit --skipLibCheck"
+
 [tasks.test]
-depends = ["build"]
+depends = ["build", "typecheck"]
 description = "Test the Anchor Program"
 run = "anchor test"
 

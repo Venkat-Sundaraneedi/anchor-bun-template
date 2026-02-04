@@ -13,12 +13,14 @@ bun add <package-name>@latest
 When encountering errors, follow this sequence:
 
 1. **Verify Installation**
+
    ```bash
    bun list <package-name>
    # If missing: bun add <package-name>@latest
    ```
 
 2. **Get Documentation via Context7 MCP**
+
    ```
    Package: <installed-package-name>
    Query: <specific error or functionality>
