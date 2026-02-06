@@ -1,6 +1,6 @@
 import { describe, test, expect, beforeAll } from "bun:test";
 import * as solana from "@solana/kit";
-import { createDefaultLiteSVMClient, RpcFromLiteSVM } from "@solana/kit-plugins";
+import { createDefaultLiteSVMClient, type RpcFromLiteSVM } from "@solana/kit-plugins";
 import { getInitializeInstruction, BUN_KIT_PROGRAM_ADDRESS } from "../clients/js/src/generated";
 
 describe("Bun Kit Program", () => {
@@ -13,7 +13,7 @@ describe("Bun Kit Program", () => {
       payer: payer,
     });
 
-    client.airdrop(payer.address, solana.lamports(10_000_000_000n));
+    await client.airdrop(payer.address, solana.lamports(10_000_000_000n));
     client.rpc satisfies RpcFromLiteSVM;
     client.svm.addProgramFromFile(BUN_KIT_PROGRAM_ADDRESS, "./target/deploy/bun_kit.so");
   });

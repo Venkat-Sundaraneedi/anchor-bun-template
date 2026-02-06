@@ -1,5 +1,5 @@
 [tools]
-bun = "1.3.8"
+bun = "1.3.9"
 "npm:codama" = "latest"
 "npm:oxfmt" = "latest"
 "npm:oxlint" = "latest"
@@ -28,18 +28,14 @@ run = "anchor program deploy"
 
 [tasks.lint]
 description = "Lint the project"
-run = "oxlint --fix"
+run = "oxlint --type-aware --type-check --fix"
 
 [tasks.fmt]
 description = "format the project"
 run = "oxfmt && cargo fmt --all"
 
-[tasks.typecheck]
-description = "Type check TypeScript with tsgo"
-run = "bunx @typescript/native-preview --noEmit --skipLibCheck"
-
 [tasks.test]
-depends = ["build", "typecheck"]
+depends = ["build"]
 description = "Test the Anchor Program"
 run = "anchor test"
 
