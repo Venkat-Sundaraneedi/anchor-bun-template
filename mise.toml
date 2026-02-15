@@ -17,7 +17,7 @@ description = "Start surfpool"
 run = "surfpool start"
 
 [tasks.build]
-depends = ["lint", "fmt", "sync"]
+depends = ["sync"]
 description = "Build the Anchor Program"
 run = "anchor build && codama run js"
 
@@ -35,7 +35,7 @@ description = "format the project"
 run = "oxfmt && cargo fmt --all"
 
 [tasks.test]
-depends = ["build"]
+depends = ["build", "lint", "fmt"]
 description = "Test the Anchor Program"
 run = "anchor test"
 

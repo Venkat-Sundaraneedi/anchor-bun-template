@@ -6,7 +6,7 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-bun_kit = "DE8QVKhrjFGt33aCUTPXUvt1v3SfEV6jJDAQSUW7eMkA"
+bun_kit = "BgRfy86bHxQ2YoRCCgYeFJe4wG2VzTnUfr7L8Dxyp4KY"
 
 [registry]
 url = "https://api.apr.dev"
