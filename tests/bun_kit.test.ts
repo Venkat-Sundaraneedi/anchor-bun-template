@@ -1,7 +1,7 @@
 import { describe, test, expect, beforeAll } from "bun:test";
 import * as solana from "@solana/kit";
 import { createDefaultLiteSVMClient, type RpcFromLiteSVM } from "@solana/kit-plugins";
-import { getInitializeInstruction, BUN_KIT_PROGRAM_ADDRESS } from "../clients/js/src/generated";
+import { getInitializeInstruction, BUN_KIT_PROGRAM_ADDRESS } from "../clients/js";
 
 describe("Bun Kit Program", () => {
   let client: Awaited<ReturnType<typeof createDefaultLiteSVMClient>>;
