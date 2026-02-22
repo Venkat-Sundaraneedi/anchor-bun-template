@@ -56,16 +56,16 @@ mise test
 
 ## Opinionated Tech Stack
 
-| Component             | This Template               | Default Anchor        |
-| --------------------- | --------------------------- | --------------------- |
-| **Package Manager**   | Bun                         | Yarn/NPM              |
-| **Test Runner**       | Bun test                    | Mocha                 |
-| **Client Library**    | Generated via Codama        | anchor-lang/core      |
-| **Web3 Library**      | @solana/kit (Web3.js v2)    | @solana/web3.js v1    |
-| **Testing Framework** | solana-kit-plugins (litesvm)| Manual                |
-| **Automation**        | Mise tasks                  | Custom scripts        |
-| **Localnet**          | Surfpool                    | solana-test-validator |
-| **Deployment**        | Surfpool Runbooks           | Anchor migrations     |
+| Component             | This Template                | Default Anchor        |
+| --------------------- | ---------------------------- | --------------------- |
+| **Package Manager**   | Bun                          | Yarn/NPM              |
+| **Test Runner**       | Bun test                     | Mocha                 |
+| **Client Library**    | Generated via Codama         | anchor-lang/core      |
+| **Web3 Library**      | @solana/kit (Web3.js v2)     | @solana/web3.js v1    |
+| **Testing Framework** | solana-kit-plugins (litesvm) | Manual                |
+| **Automation**        | Mise tasks                   | Custom scripts        |
+| **Localnet**          | Surfpool                     | solana-test-validator |
+| **Deployment**        | Surfpool Runbooks            | Anchor migrations     |
 
 ## Project Structure
 
@@ -101,26 +101,26 @@ mise test
 
 ## Tech Stack (Installed automatically via mise)
 
-| Component                     | Purpose                      | Version    |
-| ----------------------------- | ---------------------------- | ---------- |
-| **Bun**                       | JavaScript runtime           | 1.3.9+     |
-| **Anchor Lang**               | Solana framework             | Git master |
-| **Codama**                    | TypeScript client generation | latest     |
-| **Solana Kit**                | Web3.js v2 wrapper           | ^6.1.0     |
-| **Solana Kit Plugins**        | LiteSVM testing utilities    | ^0.5.0     |
-| **Oxlint**                    | TypeScript linting           | latest     |
-| **Oxfmt**                     | TypeScript formatting        | latest     |
-| **PM2**                       | Process manager              | latest     |
+| Component              | Purpose                      | Version    |
+| ---------------------- | ---------------------------- | ---------- |
+| **Bun**                | JavaScript runtime           | 1.3.9+     |
+| **Anchor Lang**        | Solana framework             | Git master |
+| **Codama**             | TypeScript client generation | latest     |
+| **Solana Kit**         | Web3.js v2 wrapper           | ^6.1.0     |
+| **Solana Kit Plugins** | LiteSVM testing utilities    | ^0.5.0     |
+| **Oxlint**             | TypeScript linting           | latest     |
+| **Oxfmt**              | TypeScript formatting        | latest     |
+| **PM2**                | Process manager              | latest     |
 
 ## NPM Dependencies
 
-| Package                        | Purpose                    | Version  |
-| ------------------------------ | -------------------------- | -------- |
-| **@solana/kit**                | Core Solana web3 library   | ^6.1.0   |
-| **@solana/kit-plugins**          | Testing plugins (LiteSVM)  | ^0.5.0   |
-| **@codama/nodes-from-anchor**  | Codama Anchor IDL parser   | ^1.3.8   |
-| **@codama/renderers-js**         | TypeScript client renderer | ^2.0.2   |
-| **solana-kite**                  | Kite deployment utility    | ^3.2.0   |
+| Package                       | Purpose                    | Version |
+| ----------------------------- | -------------------------- | ------- |
+| **@solana/kit**               | Core Solana web3 library   | ^6.1.0  |
+| **@solana/kit-plugins**       | Testing plugins (LiteSVM)  | ^0.5.0  |
+| **@codama/nodes-from-anchor** | Codama Anchor IDL parser   | ^1.3.8  |
+| **@codama/renderers-js**      | TypeScript client renderer | ^2.0.2  |
+| **solana-kite**               | Kite deployment utility    | ^3.2.0  |
 
 ## Development Workflow
 
@@ -155,19 +155,19 @@ mise deploy           # Deploy to localnet
 
 ## Available Mise Tasks
 
-| Task            | Description                              | Dependencies         |
-| --------------- | ---------------------------------------- | -------------------- |
-| **setup**       | Install Bun dependencies                 | -                    |
-| **sync**        | Sync Anchor program keys                 | -                    |
-| **build**       | Build program + generate clients         | sync                 |
-| **test**        | Run full test suite                      | build, lint, fmt     |
-| **lint**        | Lint TypeScript with auto-fix            | -                    |
-| **fmt**         | Format TypeScript and Rust code          | -                    |
-| **deploy**      | Deploy program to Surfpool               | build                |
-| **surfpool_start** | Start Surfpool validator (pm2)          | -                    |
-| **surfpool_stop**  | Stop Surfpool validator                 | -                    |
-| **update**      | Update Bun and Cargo dependencies        | -                    |
-| **clean**       | Clean all build artifacts and caches     | -                    |
+| Task               | Description                          | Dependencies     |
+| ------------------ | ------------------------------------ | ---------------- |
+| **setup**          | Install Bun dependencies             | -                |
+| **sync**           | Sync Anchor program keys             | -                |
+| **build**          | Build program + generate clients     | sync             |
+| **test**           | Run full test suite                  | build, lint, fmt |
+| **lint**           | Lint TypeScript with auto-fix        | -                |
+| **fmt**            | Format TypeScript and Rust code      | -                |
+| **deploy**         | Deploy program to Surfpool           | build            |
+| **surfpool_start** | Start Surfpool validator (pm2)       | -                |
+| **surfpool_stop**  | Stop Surfpool validator              | -                |
+| **update**         | Update Bun and Cargo dependencies    | -                |
+| **clean**          | Clean all build artifacts and caches | -                |
 
 ## Configuration Files
 
@@ -190,6 +190,7 @@ import { getInitializeInstruction, BUN_KIT_PROGRAM_ADDRESS } from "../clients/js
 ```
 
 The test suite includes:
+
 - LiteSVM-based in-memory testing (no local validator needed)
 - Program loading from compiled `.so` files
 - Transaction building with @solana/kit pipe API
@@ -214,11 +215,13 @@ This template includes Surfpool for advanced local development:
 - **Watch Mode**: Auto-deploy on program recompilation
 
 Start with watch mode:
+
 ```bash
 surfpool start --watch
 ```
 
 Execute runbooks:
+
 ```bash
 surfpool run deployment
 ```

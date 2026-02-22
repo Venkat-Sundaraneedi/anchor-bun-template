@@ -1,7 +1,7 @@
 import { describe, test, expect, beforeAll } from "bun:test";
 import { type KeyPairSigner } from "@solana/kit";
 import { connect, type Connection } from "solana-kite";
-import { getInitializeInstruction } from "../clients/js";
+import { getInitializeInstruction } from "../clients/js/src/generated";
 
 describe("Kite Example Program", () => {
   let payer: KeyPairSigner;
