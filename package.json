@@ -4,7 +4,9 @@
   "license": "ISC",
   "type": "module",
   "scripts": {},
-  "dependencies": {},
+  "dependencies": {
+    "@codama/renderers-rust": "^2.0.1"
+  },
   "devDependencies": {
     "@codama/nodes-from-anchor": "^1.3.9",
     "@codama/renderers-js": "^2.0.3",
