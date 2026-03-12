@@ -6,16 +6,13 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-bun_kit = "FFjmEV3jwuVxpsQQVKcKMTYGo1QpA5zQEQXoWE4knbJZ"
-
-[registry]
-url = "https://api.apr.dev"
+bun_kit = "2A3hSE4yGd6t7W4CytLYz8gmKpCcLZuEvCJy2rzYijMr"
 
 [provider]
 cluster = "localnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
-test = "cargo test-sbf"
+test = "cargo nextest run"
 
 [hooks]
