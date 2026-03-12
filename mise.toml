@@ -4,7 +4,6 @@ bun = "latest"
 "npm:oxfmt" = "latest"
 "npm:oxlint" = "latest"
 "npm:oxlint-tsgolint" = "latest"
-"npm:pm2" = "latest"
 
 [tasks.setup]
 description = "Install the Dependencies"
@@ -14,18 +13,11 @@ run = "bun install"
 description = "Sync Anchor keys"
 run = "anchor keys sync"
 
-[tasks.surfpool_start]
-description = "Start surfpool"
-run = "pm2 start \"surfpool start --watch\" --name surfpool"
-
-[tasks.surfpool_stop]
-description = "Stop surfpool"
-run = "pm2 stop surfpool && pm2 delete surfpool"
-
 [tasks.build]
 depends = ["sync"]
 description = "Build the Anchor Program"
-run = "anchor build && codama run js"
+# run = "anchor build && codama run rust"
+run = "anchor build"
 
 [tasks.deploy]
 depends = ["build"]
