@@ -1,9 +1,10 @@
 [tools]
 bun = "latest"
-"npm:codama" = "latest"
-"npm:oxfmt" = "latest"
-"npm:oxlint" = "latest"
-"npm:oxlint-tsgolint" = "latest"
+sccache = "0.14.0"
+"npm:codama" = "1.5.1"
+"npm:oxfmt" = "0.41.0"
+"npm:oxlint" = "1.56.0"
+"npm:oxlint-tsgolint" = "0.17.1"
 
 [tasks.setup]
 description = "Install the Dependencies"
