@@ -6,7 +6,7 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-bun_kit = "2A3hSE4yGd6t7W4CytLYz8gmKpCcLZuEvCJy2rzYijMr"
+bun_litesvm_kit = "CyFCL8WKc6EUfyobYuvnTPTLHx9Nm44HjRUanGroFCzb"
 
 [provider]
 cluster = "localnet"

@@ -1,12 +1,12 @@
 [package]
-name = "bun-kit"
+name = "bun-litesvm-kit"
 version = "0.1.0"
 description = "Created with Anchor"
 edition = "2021"
 
 [lib]
 crate-type = ["cdylib", "lib"]
-name = "bun_kit"
+name = "bun_litesvm_kit"
 
 [features]
 default = []

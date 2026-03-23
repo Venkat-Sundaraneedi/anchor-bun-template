@@ -1,5 +1,5 @@
 {
-  "idl": "target/idl/bun_kit.json",
+  "idl": "target/idl/bun_litesvm_kit.json",
   "before": [],
   "scripts": {
     "rust": {

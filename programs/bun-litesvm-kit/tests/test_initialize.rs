@@ -9,17 +9,17 @@ use {
 
 #[test]
 fn test_initialize() {
-    let program_id = bun_kit::id();
+    let program_id = bun_litesvm_kit::id();
     let payer = Keypair::new();
     let mut svm = LiteSVM::new();
-    let bytes = include_bytes!("../../../target/deploy/bun_kit.so");
+    let bytes = include_bytes!("../../../target/deploy/bun_litesvm_kit.so");
     svm.add_program(program_id, bytes).unwrap();
     svm.airdrop(&payer.pubkey(), 1_000_000_000).unwrap();
 
     let instruction = Instruction::new_with_bytes(
         program_id,
-        &bun_kit::instruction::Initialize {}.data(),
-        bun_kit::accounts::Initialize {}.to_account_metas(None),
+        &bun_litesvm_kit::instruction::Initialize {}.data(),
+        bun_litesvm_kit::accounts::Initialize {}.to_account_metas(None),
     );
 
     let blockhash = svm.latest_blockhash();
